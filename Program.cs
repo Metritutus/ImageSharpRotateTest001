@@ -35,8 +35,8 @@ namespace ImageSharpRotateTest001
         {
             using MemoryStream inputStream = RunWithStopWatch(() => new MemoryStream(imageBytes), "Initialising input stream.", "Input stream initialised");
             using System.Drawing.Image image = RunWithStopWatch(() => System.Drawing.Image.FromStream(inputStream), "Loading image.", "Image loaded");
-            using var graphics = RunWithStopWatch(() => System.Drawing.Graphics.FromImage(image), "Creating graphics.", "Graphics created");
             using var bitmap = RunWithStopWatch(() => new System.Drawing.Bitmap(image.Width, image.Height), "Creating bitmap.", "Bitmap created");
+            using var graphics = RunWithStopWatch(() => System.Drawing.Graphics.FromImage(bitmap), "Creating graphics.", "Graphics created");
             using MemoryStream outputStream = new MemoryStream();
 
             Point center = new Point(image.Width / 2, image.Height / 2);
